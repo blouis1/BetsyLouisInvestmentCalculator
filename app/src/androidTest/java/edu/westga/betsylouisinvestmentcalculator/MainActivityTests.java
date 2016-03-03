@@ -11,6 +11,7 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
 
     private MainActivity activity;
     private Button btnCalculate;
+    private EditText etPrincipal;
 
     public MainActivityTests() {
         super(MainActivity.class);
@@ -20,6 +21,7 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
     public void setUp() {
         this.activity  = getActivity();
         this.btnCalculate = (Button) this.activity.findViewById(R.id.btnCalculate);
+        this.etPrincipal = (EditText) this.activity.findViewById(R.id.etPrincipal);
     }
 
     public void testActivityExists() {
@@ -28,5 +30,21 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
 
     public void testCalculateButtonIsDisabled() {
         assertTrue(!this.btnCalculate.isEnabled());
+    }
+
+    public void testCalculateButtonIsDisabledWhenOnlyPrincipalIsEntered() {
+        this.enterPrincipal();
+        assertTrue(!this.btnCalculate.isEnabled());
+    }
+
+    // Simulates value entered into principal field
+    private void enterPrincipal() {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                //MainActivityTests.this.nameEditText.requestFocus();
+                MainActivityTests.this.etPrincipal.setText("1000");
+            }
+        });
     }
 }
