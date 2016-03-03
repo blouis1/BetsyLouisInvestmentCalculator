@@ -12,6 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import java.text.NumberFormat;
 
 import edu.westga.betsylouisinvestmentcalculator.model.InvestmentCalculator;
 
@@ -21,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText etPrincipal;
     private EditText etRate;
     private EditText etNumberOfPeriods;
+    private InvestmentCalculator calculator;
+    private TextView tvResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         this.etPrincipal = (EditText) findViewById(R.id.etPrincipal);
         this.etNumberOfPeriods = (EditText) findViewById(R.id.etPeriod);
         this.etRate = (EditText) findViewById(R.id.etRate);
+        this.calculator = new InvestmentCalculator();
+        this.tvResult = (TextView)findViewById(R.id.tvResult);
 
         this.etPrincipal.addTextChangedListener(this.watcher);
         this.etNumberOfPeriods.addTextChangedListener(this.watcher);
@@ -57,10 +64,12 @@ public class MainActivity extends AppCompatActivity {
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
         @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {}
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
 
         @Override
         public void afterTextChanged(Editable s) {
+            MainActivity.this.tvResult.setText("");
             boolean principalNotEmpty = MainActivity.this.etPrincipal.getText().length()>0;
             boolean rateNotEmpty = MainActivity.this.etRate.getText().length()>0;
             boolean periodNotEmpty = MainActivity.this.etNumberOfPeriods.getText().length()>0;
@@ -89,5 +98,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void calculateFutureAnnuity(View view) {
+        this.calculator.setPrincipal(Double.parseDouble(this.etPrincipal.getText().toString()));
+        this.calculator.setRate(Double.parseDouble(this.etRate.getText().toString()));
+        this.calculator.setNumberOfPeriods(Integer.parseInt(this.etNumberOfPeriods.getText().toString()));
+
+        String result = NumberFormat.getCurrencyInstance().format(this.calculator.getFutureValueOfAnnuity());
+        this.tvResult.setText(result);
     }
 }

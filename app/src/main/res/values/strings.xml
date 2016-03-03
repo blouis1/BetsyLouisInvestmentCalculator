@@ -2,7 +2,8 @@
     <string name="app_name">BetsyLouisInvestmentCalculator</string>
     <string name="action_settings">Settings</string>
     <string name="amount_string">Payment Amount</string>
-    <string name="rate_string">Rate</string>
+    <string name="rate_string">Rate (%)</string>
     <string name="period_string"># of Periods</string>
     <string name="calculate_string">Calculate Future Annuity</string>
+    <string name="annuity_string">Future Annuity =</string>
 </resources>
