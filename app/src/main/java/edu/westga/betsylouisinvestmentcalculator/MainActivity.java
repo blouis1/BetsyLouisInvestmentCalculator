@@ -8,13 +8,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+
+import edu.westga.betsylouisinvestmentcalculator.model.InvestmentCalculator;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button btnCalculate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.btnCalculate = (Button) findViewById(R.id.btnCalculate);
+        this.btnCalculate.setEnabled(false);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
