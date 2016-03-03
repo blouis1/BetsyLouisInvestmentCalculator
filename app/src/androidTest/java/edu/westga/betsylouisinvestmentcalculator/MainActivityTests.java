@@ -13,6 +13,7 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
     private Button btnCalculate;
     private EditText etPrincipal;
     private EditText etRate;
+    private EditText etPeriod;
 
     public MainActivityTests() {
         super(MainActivity.class);
@@ -24,6 +25,7 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         this.btnCalculate = (Button) this.activity.findViewById(R.id.btnCalculate);
         this.etPrincipal = (EditText) this.activity.findViewById(R.id.etPrincipal);
         this.etRate = (EditText) this.activity.findViewById(R.id.etRate);
+        this.etPeriod = (EditText) this.activity.findViewById(R.id.etPeriod);
     }
 
     public void testActivityExists() {
@@ -55,13 +57,29 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         assertTrue(!this.btnCalculate.isEnabled());
     }
 
-    // Simulates value entered into principal field
+    // Simulates value entered into rate field
     private void enterRate() {
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
                 //MainActivityTests.this.nameEditText.requestFocus();
                 MainActivityTests.this.etRate.setText("1");
+            }
+        });
+    }
+
+    public void testCalculateButtonIsDisabledWhenOnlyNumberOfPeriodsIsEntered() {
+        this.enterPeriods();
+        assertTrue(!this.btnCalculate.isEnabled());
+    }
+
+    // Simulates value entered into period field
+    private void enterPeriods() {
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                //MainActivityTests.this.nameEditText.requestFocus();
+                MainActivityTests.this.etPeriod.setText("1");
             }
         });
     }
