@@ -52,4 +52,13 @@ public class CalculateFutureValueTests {
 
         assertEquals(0, this.calculator.getFutureValueOfAnnuity(), 0.01);
     }
+
+    @Test
+    public void testFutureValueIs0WhenNumberOfPeriodsIs0() {
+        this.calculator.setPrincipal(1000);
+        this.calculator.setRate(1);
+        this.calculator.setNumberOfPeriods(0);
+
+        assertEquals(0, this.calculator.getFutureValueOfAnnuity(), 0.01);
+    }
 }
