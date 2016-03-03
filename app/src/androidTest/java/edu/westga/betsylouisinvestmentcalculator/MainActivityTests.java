@@ -83,4 +83,22 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
             }
         });
     }
+
+    public void testCalculateButtonIsDisabledWhenOnlyPrincipalAndRateAreEntered() {
+        this.enterPrincipal();
+        this.enterRate();
+        assertTrue(!this.btnCalculate.isEnabled());
+    }
+
+    public void testCalculateButtonIsDisabledWhenOnlyPrincipalAndNumberOfPeriodsAreEntered() {
+        this.enterPrincipal();
+        this.enterPeriods();
+        assertTrue(!this.btnCalculate.isEnabled());
+    }
+
+    public void testCalculateButtonIsDisabledWhenOnlyRateAndNumberOfPeriodsAreEntered() {
+        this.enterRate();
+        this.enterPeriods();
+        assertTrue(!this.btnCalculate.isEnabled());
+    }
 }
