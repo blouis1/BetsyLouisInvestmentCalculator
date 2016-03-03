@@ -26,6 +26,9 @@ public class CalculateFutureValueTests {
         assertEquals(0.02, this.calculator.getRate(), 0);
     }
 
+    /*
+    Test method for {@Link edu.westga.BetsyLouisInvestmentCalculator.model.InvestmentCalculator.getFutureValueOfAnnuity()}
+     */
     @Test
     public void testFutureValueIsCorrectWithNormalInputs() {
         this.calculator.setPrincipal(1000);
@@ -35,6 +38,9 @@ public class CalculateFutureValueTests {
         assertEquals(5204.04, this.calculator.getFutureValueOfAnnuity(), 0.01);
     }
 
+    /*
+    Test method for {@Link edu.westga.BetsyLouisInvestmentCalculator.model.InvestmentCalculator.getFutureValueOfAnnuity()}
+     */
     @Test
     public void testFutureValueIsPrincipalTimesNumberOfPeriodsWhenRateIs0() {
         this.calculator.setPrincipal(1000);
@@ -44,6 +50,9 @@ public class CalculateFutureValueTests {
         assertEquals(1000, this.calculator.getFutureValueOfAnnuity(), 0.01);
     }
 
+    /*
+    Test method for {@Link edu.westga.BetsyLouisInvestmentCalculator.model.InvestmentCalculator.getFutureValueOfAnnuity()}
+     */
     @Test
     public void testFutureValueIs0WhenPrincipalIs0() {
         this.calculator.setPrincipal(0);
@@ -53,6 +62,9 @@ public class CalculateFutureValueTests {
         assertEquals(0, this.calculator.getFutureValueOfAnnuity(), 0.01);
     }
 
+    /*
+    Test method for {@Link edu.westga.BetsyLouisInvestmentCalculator.model.InvestmentCalculator.getFutureValueOfAnnuity()}
+     */
     @Test
     public void testFutureValueIs0WhenNumberOfPeriodsIs0() {
         this.calculator.setPrincipal(1000);
@@ -60,5 +72,17 @@ public class CalculateFutureValueTests {
         this.calculator.setNumberOfPeriods(0);
 
         assertEquals(0, this.calculator.getFutureValueOfAnnuity(), 0.01);
+    }
+
+    /*
+    Test method for {@Link edu.westga.BetsyLouisInvestmentCalculator.model.InvestmentCalculator.getFutureValueOfAnnuity()}
+     */
+    @Test
+    public void testFutureValueIsPrincipalWhenNumberOfPeriodsIs1() {
+        this.calculator.setPrincipal(1000);
+        this.calculator.setRate(1);
+        this.calculator.setNumberOfPeriods(1);
+
+        assertEquals(1000, this.calculator.getFutureValueOfAnnuity(), 0.01);
     }
 }
