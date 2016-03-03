@@ -7,7 +7,18 @@ import android.test.ActivityInstrumentationTestCase2;
  */
 public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActivity> {
 
+    MainActivity activity;
+
     public MainActivityTests() {
         super(MainActivity.class);
+    }
+
+    @Override
+    public void setUp() {
+        this.activity  = getActivity();
+    }
+
+    public void testActivityExists() {
+        assertNotNull(activity);
     }
 }
