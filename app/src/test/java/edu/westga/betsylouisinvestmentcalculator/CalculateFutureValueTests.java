@@ -18,7 +18,7 @@ public class CalculateFutureValueTests {
     }
 
     /*
-    Test method for BetsyLouisInvestmentCalculator.model.InvestmentCalculator.setRate(java.lang.Double)
+    Test method for {@Link edu.westga.BetsyLouisInvestmentCalculator.model.InvestmentCalculator.setRate(java.lang.Double)}
      */
     @Test
     public void testSetterSetsCorrectRate() {
@@ -33,5 +33,14 @@ public class CalculateFutureValueTests {
         this.calculator.setNumberOfPeriods(5);
 
         assertEquals(5204.04, this.calculator.getFutureValueOfAnnuity(), 0.01);
+    }
+
+    @Test
+    public void testFutureValueIsPrincipalTimesNumberOfPeriodsWhenRateIs0() {
+        this.calculator.setPrincipal(1000);
+        this.calculator.setRate(0);
+        this.calculator.setNumberOfPeriods(1);
+
+        assertEquals(1000, this.calculator.getFutureValueOfAnnuity(), 0.01);
     }
 }
