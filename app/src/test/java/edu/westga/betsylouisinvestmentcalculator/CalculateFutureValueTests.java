@@ -25,4 +25,13 @@ public class CalculateFutureValueTests {
         this.calculator.setRate(2);
         assertEquals(0.02, this.calculator.getRate(), 0);
     }
+
+    @Test
+    public void testFutureValueIsCorrectWithNormalInputs() {
+        this.calculator.setPrincipal(1000);
+        this.calculator.setRate(2);
+        this.calculator.setNumberOfPeriods(5);
+
+        assertEquals(5204.04, this.calculator.getFutureValueOfAnnuity(), 0.01);
+    }
 }
