@@ -85,4 +85,16 @@ public class CalculateFutureValueTests {
 
         assertEquals(1000, this.calculator.getFutureValueOfAnnuity(), 0.01);
     }
+
+    /*
+    Test method for {@Link edu.westga.BetsyLouisInvestmentCalculator.model.InvestmentCalculator.getFutureValueOfAnnuity()}
+     */
+    @Test
+    public void testFutureValueIs0WhenAllInputsAre0() {
+        this.calculator.setPrincipal(0);
+        this.calculator.setRate(0);
+        this.calculator.setNumberOfPeriods(0);
+
+        assertEquals(0, this.calculator.getFutureValueOfAnnuity(), 0.01);
+    }
 }
