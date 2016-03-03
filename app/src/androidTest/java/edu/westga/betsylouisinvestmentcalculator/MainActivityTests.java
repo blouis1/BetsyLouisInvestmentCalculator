@@ -101,4 +101,11 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         this.enterPeriods();
         assertTrue(!this.btnCalculate.isEnabled());
     }
+
+    public void testCalculateButtonIsEnabledWhenAllFieldsAreEntered() {
+        this.enterPrincipal();
+        this.enterRate();
+        this.enterPeriods();
+        assertTrue(this.btnCalculate.isEnabled());
+    }
 }
