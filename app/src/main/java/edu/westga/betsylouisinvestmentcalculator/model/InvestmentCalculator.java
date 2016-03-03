@@ -36,8 +36,8 @@ public class InvestmentCalculator {
      * Calculates the future annuity value given principal, rate and number of periods.
      * <preconditions>
      *     rate >= 0
-     *     principal > 0
-     *     number of periods > 0
+     *     principal >= 0
+     *     number of periods >= 0
      * </preconditions>
      * @return the future value of annuity
      */
